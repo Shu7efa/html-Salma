@@ -35,12 +35,6 @@
             margin-bottom: 10px;
         }
 
-        #salmaLogo {
-            width: 120px; /* Adjust the width of the logo as needed */
-            height: auto; /* Maintain aspect ratio */
-            margin-right: 10px; /* Adjust the spacing between the logo and the text */
-        }
-
         #salmaName {
             font-size: 60px;
             font-weight: bold;
@@ -78,6 +72,17 @@
             margin-top: 20px;
         }
 
+        #heartButton {
+            cursor: pointer;
+            font-size: 32px;
+            color: red;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #heartButton:hover {
+            transform: scale(1.2);
+        }
+
         @keyframes gradientAnimation {
             0% {
                 background-position: 0% 50%;
@@ -100,14 +105,21 @@
 <body>
     <div id="alhamdulillah"> ❤️ALHAMDUILLAH FOR EVERYTHING❤️</div>
     <div id="salmaContainer">
-        
         <div id="salmaName">سلمہ</div>
     </div>
     <div id="message">Happy New Year, <span id="receiverName">SALMA SACHE _THE QUEEN ❤️</span>!</div>
     <div id="thought"></div>
-    <div id="emojis">From  👧 <span style="color: navy; font-weight: bold;">ARMA</span> and 👦 <span style="color: navy; font-weight: bold;">HUZAIF</span></div>
+    <div id="emojis">From  👧 <span style="color: navy; font-weight: bold;">ARMA</span> and 👦 <span style="color: navy; font-weight: bold;">HUZAIF</span>.</div>
     <div id="salmaMissU">SALMA MISS U</div>
-    <img id="salmaLogo" src="F:\My Cloudage\sh3.jpg" alt="sh3"> <!-- Replace 'https://example.com/your_logo_url.png' with the actual URL or path of your logo -->
+    
+    <!-- Heart-shaped button -->
+    <div id="heartButton" onclick="toggleAudio()">❤️</div>
+
+    <!-- Looping audio -->
+    <audio id="audioPlayer" loop>
+        <source src="Yaara.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         function setNewYearMessage() {
@@ -125,6 +137,15 @@
             const allThoughts = thoughts.join('\n');
 
             document.getElementById('thought').innerText = allThoughts;
+        }
+
+        function toggleAudio() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+            } else {
+                audioPlayer.pause();
+            }
         }
 
         setNewYearMessage();
